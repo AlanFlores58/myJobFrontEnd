@@ -1,0 +1,343 @@
+/* .Classes*/
+
+/*this import is to make navheader static*/
+/*@import url('http://getbootstrap.com/dist/css/bootstrap.css');*/
+
+
+
+ul.navigation li {
+    /*float: right;*/
+}
+
+body {
+    min-width: 500px;
+    background-color: black;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+footer{
+    background-color: #aaaaaa;
+    padding: 10px;
+}
+
+p{
+    margin: 8px 8px 0 0;
+}
+
+/*logotipo de imagen*/
+#logo {
+    /* background-size: cover; */
+    background: url("../images/logo myjob.jpg");
+    /*background-image: url("https://images-na.ssl-images-amazon.com/images/I/71TnB8upGQL._SY355_.jpg");*/
+    background-repeat: no-repeat;
+    /* margin-bottom:10px; */
+    margin-top: 10px;
+    /* max-width: 100%; */
+    /*height: auto;*/
+    max-width: 300px;
+    max-height:300px;
+    min-width: 200px;
+    background-size: cover;
+}
+
+/*comentarios imagen*/
+#comentariosImage {
+    background: url("../images/comments.jpg");
+
+}
+
+
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    padding: 0 0 0 0;
+    margin: 0;
+}
+
+li {
+    float: left;
+}
+
+.navigation a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+ li label{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li label:hover {
+    background-color: #111;
+}
+
+.container{
+    background-color:lightgrey;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+
+/*flex container para añadir el nav  header y el logotipo de imagen*/
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: auto;
+    height: 200px;
+    background-color: lightgrey;
+    padding-bottom: 130px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.flex-item-navbar {
+    width: 100%;
+    opacity: 0.7;
+    background-color: #111111 ;
+}
+
+/*logotipo*/
+.flex-item-logo{
+    background-color: cornflowerblue;
+    width: 450px;
+    height: 150px;
+    margin: 10px;
+
+
+}
+.flex-item3 {
+    background-color: #333;
+    width: 300px;
+    height: 100%;
+    padding: 8px;
+    color: white;
+
+}
+
+/*login*/
+input, .btn-login {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-login:hover, .active:hover {
+    background-color: #45a049;
+}
+
+.login .flex-item3 {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#artiststhumbnail {
+    width:auto;
+    height:auto;
+    overflow:hidden;
+    border-color:#DADADA;
+    background-color: lightgrey;
+}
+
+.mySlides {
+    display : block;
+    width:100%;
+}
+
+nav{
+    width: 100%;
+}
+
+form{
+    margin: 0 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.getPremiunVersion{
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+.getPremiunVersion .btn-login{
+    padding: 10px;
+}
+
+.profileImg{
+    height: 130px;
+    width: 130px;
+}
+
+table, th, td{
+    margin: 0 15%;
+    border: 1px solid black;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.imageTable,.imageTable th,.imageTable td{
+    margin: 0 15%;
+    width: 70%;
+    border: none;
+    text-align: center;
+}
+
+td{
+    background-color: #FFFFFF;
+}
+
+th{
+    background-color: #111111;
+    color: white;
+}
+
+table{
+    table-layout: fixed;
+}
+
+td {
+    text-align: right;
+}
+
+.cover{
+    background: url(../images/images800/employees-group.jpg);
+}
+
+.frame{
+    margin: auto;
+    background-color: black;
+    padding: 10px;
+    width: 50%;
+}
+
+.frame2{
+    margin: auto;
+    background-color: white;
+    width: 100%;
+}
+
+.accept {
+    background-color: #4CAF50;
+}
+
+.cancel{
+    background-color: #FE2700;
+}
+
+.button{
+    background-color: #666666;
+    width: 100%;
+    margin: 0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button a{
+    color: white;
+}
+
+.accept:hover {
+    background-color: #45a049;
+}
+
+.cancel:hover {
+    background-color: #c52b00;
+}
+
+.button:hover {
+    background-color: #b1afb1;
+}
+
+.headers{
+    font-weight: bold;
+    padding: 5px 0;
+    margin: auto;
+    width: 70%;
+}
+
+.headers span{
+    font-weight: 100;
+    background-color: #eaeaea;
+    padding: 5px 0;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.headers input, .headers textarea{
+    font-weight: 100;
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.formContent{
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 0 auto;
+    width: 70%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: left;
+}
+
+#result{
+    text-align: center;
+}
+
+.headers input[type=radio], .headers input[type=checkbox]{
+    width: auto;
+    display: initial;
+    margin: 0 15px 0 5px;
+}
+
+.headers img{
+    width: 200px;
+    height: 300px;
+    margin: 0 auto;
+    display: block;
+}

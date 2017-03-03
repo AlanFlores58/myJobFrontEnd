@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="myJobFrontEnd:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="front_job.war">
+      <element id="artifact" artifact-name="myJobFrontEnd:war exploded" />
+    </root>
+  </artifact>
+</component>
