@@ -71,6 +71,16 @@
             </div>
 
             <div class="headers">
+                <label for="cellphone">Celular:</label>
+                <input type="tel" id="cellphone" name="cellphone">
+            </div>
+
+            <div class="headers">
+                <label for="telephone">Telefono:</label>
+                <input type="tel" id="telephone" name="telephone">
+            </div>
+
+            <div class="headers">
                 <label for="name">Nombre de Usuario:</label>
                 <input type="text" id="username2" name="username">
             </div>

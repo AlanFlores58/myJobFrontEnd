@@ -79,7 +79,7 @@
                         result.append('<td><input type="checkbox" disabled="true" name="canceled" id="canceled" ' + (item.cancelled === true ? 'checked' : '') + '></td>');
                         result.append('<td><input type="checkbox" disabled="true" name="confirmed" id="confirmed" ' + (item.confirmed === true ? 'checked' : '') + '></td>');
                         result.append('<td><input type="checkbox" disabled="true" name="finished" id="finished" ' + (item.finish === true ? 'checked' : '') + '></td>');
-                        result.append('<td class="button imageTable"><a href="Contact.jsp?contractID=' + item.id + '">Denunciar</a></td>');
+                        result.append('<td class="button imageTable"><a href="Report.jsp?contractID=' + item.id + '">Denunciar</a></td>');
                         result.append('</tr>');
                     });
                 }
@@ -131,6 +131,10 @@
 
 </div>
 <div  class="container">
+    <div class="formSearch">
+        ID: <input type="text" id="contract" name="contract">
+        <input type="button" class="button" onclick="searchId()" value="Buscar">
+    </div>
     <table id="myTable">
     </table>
 </div>
@@ -142,6 +146,9 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script>
+    function searchId() {
+        window.location.href = "myContract.jsp?contractID=" + $('#contract').val();
+    }
     function Login() {
         var authorizeButton = $('.btn-login');
         $.ajax({

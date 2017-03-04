@@ -130,6 +130,10 @@
 
 </div>
 <div class="container">
+    <div class="formSearch">
+        ID: <input type="text" id="contract" name="contract">
+        <input type="button" class="button" onclick="searchId()" value="Buscar">
+    </div>
     <table id="myTable">
     </table>
 </div>
@@ -142,6 +146,9 @@
 </footer>
 
 <script>
+    function searchId() {
+        window.location.href = "myContract.jsp?contractID=" + $('#contract').val();
+    }
     function Login() {
         var authorizeButton = $('.btn-login');
         $.ajax({

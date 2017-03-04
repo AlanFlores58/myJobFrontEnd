@@ -33,6 +33,7 @@ public class LoginFilter implements Filter {
                 && !httpRequest.getRequestURI().startsWith("/front_job/getPremium")
                 && !httpRequest.getRequestURI().startsWith("/front_job/Register.jsp")
                 && !httpRequest.getRequestURI().startsWith("/front_job/images")
+                && !httpRequest.getRequestURI().startsWith("/front_job/SendEmail")
                 && !httpRequest.getRequestURI().startsWith("/front_job/saveImage")
                 && !httpRequest.getRequestURI().startsWith("/front_job/saveImageUser")
                 && !httpRequest.getRequestURI().startsWith("/front_job/css")

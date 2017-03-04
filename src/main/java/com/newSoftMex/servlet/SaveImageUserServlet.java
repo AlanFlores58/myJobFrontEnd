@@ -26,7 +26,8 @@ public class SaveImageUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String sex = request.getParameter("sex").equals("male") ? "0" : "1";
         String type = request.getParameter("type").equals("comprar") ? "3" : "2";
-
+        String cellphone = request.getParameter("cellphone");
+        String telephone = request.getParameter("telephone");
 
 
         final String relativePath = "images/imagesUser";
@@ -50,7 +51,7 @@ public class SaveImageUserServlet extends HttpServlet {
 
 
             HttpSession session = request.getSession(false);
-            URL url = new URL("http://localhost:8095/api_job/public/api/v1/signup/" + name.replace(" ","%20") + "/" + lastname.replace(" ","%20") + "/" + mail.replace(" ","%20") + "/" + username.replace(" ","%20") + "/" + password.replace(" ","%20") + "/" + type + "/" + sex + "/" + ("../" + relativePath + "/").replace("/","--").replace(".","%2e") + fileName.replace(".","%2e") + "/");
+            URL url = new URL("http://localhost:8095/api_job/public/api/v1/signup/" + name.replace(" ","%20") + "/" + lastname.replace(" ","%20") + "/" + mail.replace(" ","%20") + "/" + username.replace(" ","%20") + "/" + password.replace(" ","%20") + "/" + type + "/" + sex + "/" + ("../" + relativePath + "/").replace("/","--").replace(".","%2e") + fileName.replace(".","%2e") + "/" + cellphone.replace(" ","%20") + "/" + telephone.replace(" ","%20"));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoInput(true);

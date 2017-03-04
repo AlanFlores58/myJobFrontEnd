@@ -248,17 +248,6 @@
             <input type="button" class="button" onclick="saveComment()" value="Guardar Comentario">
         </div>
     </form>
-    <!--<div>
-        Comentarios:
-        <table id="myTable">
-
-        </table>
-        <div>
-            Crear Comentario:
-            <textarea id="comment" rows="4" cols="50"></textarea>
-            <input type="button" onclick="saveComment()" value="Guardar Comentario">
-        </div>
-    </div>-->
 </div>
 <footer>
 

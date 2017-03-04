@@ -19,6 +19,16 @@
     </servlet>-->
 
     <servlet>
+        <servlet-name>SendEmail</servlet-name>
+        <servlet-class>com.newSoftMex.servlet.SendEmailServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SendEmail</servlet-name>
+        <url-pattern>/SendEmail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>GetPremimum</servlet-name>
         <servlet-class>com.newSoftMex.servlet.GetPremiumServlet</servlet-class>
     </servlet>

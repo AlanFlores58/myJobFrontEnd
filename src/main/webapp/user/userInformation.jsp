@@ -52,11 +52,15 @@
                     var name= $("#name");
                     var lastname = $("#lastname");
                     var email = $("#email");
+                    var cellphone = $("#cellphone");
+                    var telephone = $("#telephone");
 
                     username.append("" + data.data.username + "");
                     name.append("" + data.data.name + "");
                     lastname.append("" + data.data.last_name + "");
                     email.append("" + data.data.email + "");
+                    cellphone.append("" + data.data.cellphone + "")
+                    telephone.append("" + data.data.telephone + "")
                     $.ajax({
                         url: "http://localhost:8095/api_job/private/api/v1/getCommentsByUserService/" + data.data.username,
                         type: "GET",
@@ -149,6 +153,8 @@
         <div class="headers">Nombre:<span id="name"></span></div>
         <div class="headers">Apellido:<span id="lastname"></span></div>
         <div class="headers">Correo Electronico:<span id="email"></span></div>
+        <div class="headers">Celular:<span id="cellphone"></span></div>
+        <div class="headers">Telefono:<span id="telephone"></span></div>
         Comentarios:
         <table id="myTable">
         </table>

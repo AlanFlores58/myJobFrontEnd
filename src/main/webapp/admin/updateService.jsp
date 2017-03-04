@@ -64,26 +64,6 @@
                 alert(err);
             }
         });
-
-        function previewFile(){
-            var preview = document.querySelector('img'); //selects the query named img
-            var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-            var reader  = new FileReader();
-
-            reader.onloadend = function () {
-                preview.src = reader.result;
-            }
-
-            if (file) {
-                reader.readAsDataURL(file); //reads the data as a URL
-            } else {
-                preview.src = "";
-            }
-        }
-
-        function saveImage(){
-            $('#save-form').submit();
-        }
     </script>
 </head>
 <body>
@@ -126,7 +106,7 @@
 <div class="container">
     <form name="saveImage"  class="formContent" action="/front_job/saveImage" id="save-form" method="post" enctype="multipart/form-data">
 
-        <div class="headers"><img src="" id="img" alt="Image preview..."></div>
+        <div class="headers"><img src="" name="serviceImage" id="img" alt="Image preview..."></div>
         <div class="headers"><input type="file" id=file name="file" onchange="previewFile()"/></div>
         <div class="headers">Nombre: <input type="text" id="name" name="name" /></div>
         <div class="headers">Descripcion: <input type="text" id="description" name="description" /></div>
@@ -173,6 +153,31 @@
             window.location.href = "/front_job/index.jsp";
         });
     }
+
+    function previewFile(){
+        var preview = document.querySelector('img[name=serviceImage]'); //selects the query named img
+        var file    = document.querySelector('input[name=file]').files[0]; //sames as here
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); //reads the data as a URL
+        } else {
+            preview.src = "";
+        }
+    }
+
+    previewFile();
+
+    function saveImage(){
+        $('#save-form').submit();
+    }
+
+    previewFile();  //calls the function named previewFile()
+
 </script>
 </body>
 </html>

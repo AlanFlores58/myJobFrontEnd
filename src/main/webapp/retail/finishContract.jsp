@@ -154,7 +154,7 @@
             <label for="username"><%=userMessage%></label>
             <input type="<%=state%>" id="username" placeholder="username" required></li>
 
-            <img name="profileImg" class="profileImg" src="<%=image%>" alt="User image...">
+            <img name="profileImg" class="profileImg" src="<%=image%>" alt="User image...">v
 
 
             <label for="password" <%=state2%>>Password</label>
