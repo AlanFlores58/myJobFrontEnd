@@ -50,8 +50,8 @@ public class SendEmailServlet extends HttpServlet{
 
         System.out.println(emailTo);
         Properties props = new Properties();
-        String emailFrom = "********@gmail.com";
-        String password = "*********";
+        String emailFrom = "alanmasterga@gmail.com";
+        String password = "207544774";
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class",

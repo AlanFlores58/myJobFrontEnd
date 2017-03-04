@@ -231,7 +231,7 @@
         <div class="headers">Cupon: <span id="cupons"></span></div>
         <div class="headers">Fecha de inicio: <span id="dateBegins"></span></div>
         <div class="headers">Fecha final: <span id="dateFinish"></span></div>
-        <div class="headers">Precio con descuento: <span id="priceWithDescount">0</span></div>
+        <div class="headers">Precio con descuento: <span id="priceWithDescount"></span></div>
         <div class="headers">Pagado: <input type="checkbox" disabled="true" name="payed" id="payed"></div>
         <div class="headers">Terminado por admin: <input type="checkbox" disabled="true" name="admin" id="admin"></div>
         <div class="headers">Cancelado: <input type="checkbox" disabled="true" name="admin" id="canceled"></div>

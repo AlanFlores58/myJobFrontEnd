@@ -70,7 +70,7 @@
 
                     serviceName.append(data.data.service.name);
                     userService.append(data.data.service.userService.username);
-                    user.append("<%=userName%>");
+                    user.append(data.data.userContract.username);
                     servicePrice.append(data.data.service.price);
                     price.append(data.data.price);
                     description.append(data.data.description);
@@ -208,7 +208,7 @@
     <div class="headers">Cupon: <span id="cupons"></span></div>
     <div class="headers">Fecha de inicio: <span id="dateBegins"></span></div>
     <div class="headers">Fecha final: <span id="dateFinish"></span></div>
-    <div class="headers">Precio con descuento: <span id="priceWithDescount">0</span></div>
+    <div class="headers">Precio con descuento: <span id="priceWithDescount"></span></div>
     <div class="headers">Pagado: <input type="checkbox" disabled="true" name="payed" id="payed"></div>
     <div class="headers">Terminado por admin: <input type="checkbox" disabled="true" name="admin" id="admin"></div>
     <div class="headers">Cancelado: <input type="checkbox" disabled="true" name="admin" id="canceled"></div>
