@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>MyJob Group</title>
-    <link rel="stylesheet" type="text/css" href="css/contacto.css">
     <link rel="stylesheet" type="text/css" href="css/mobile.css">
+    <%--<style type="text/css">html, body { height: 100%; margin: 0; padding: 0; }--%>
+    <%--#map { height: 100%; }--%>
+    <%--</style>--%>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPiMd_wot2cZ0axHiWPubGUs4iQBIxQ50&callback=initMap">
+    </script>
 </head>
 <body>
 <%
@@ -18,7 +23,7 @@
     String state = "text";
     String state2 = "";
     String state3 = "password";
-    if(token != null) {
+    if (token != null) {
         buttonLogin = "Logout";
         userMessage = "Bienvenido: " + user;
         state = "hidden";
@@ -44,31 +49,46 @@
 </div>
 
 <div class="container">
-    <form id="contact" action="" method="post">
-        <h3>Colorlib Contact Form</h3>
-        <h4>Contact us for custom quote</h4>
-        <fieldset>
-            <input placeholder="Your name" type="text" tabindex="1" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Your Email Address" type="email" tabindex="2" required>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
-        </fieldset>
-        <fieldset>
-            <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
-        </fieldset>
-        <fieldset>
-            <button name="submit" type="button" id="contact-submit" data-submit="...Sending">Submit</button>
-        </fieldset>
-        <%--<p class="copyright">Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>--%>
-        <%--</p>--%>
+    <form id="contact" class="formContent" action="" method="post">
+        <h2>Contáctanos </h2>
+        <p>Gracias por interesarte en MyJob. En MyJob valoramos mucho tus opiniones y nos gustaría ofrecerte el mejor
+            servicio y ponerte en contacto con nosotros
+            para proporcionarte la información que necesites.
+            Queremos escuchar tus ideas, comentarios o dudas. Queremos mejorar MyJob para prestarte un mejor
+            servicio.</p>
+
+
+        <div class="headers">Director General: <span>Gustavo Adolfo Reynoso Díaz</span></div>
+        <div class="headers"><b>Envíanos un correo:</b> <span><a
+                href="mailto:gustavo.reynoso@myjob.com?Subject=Gracias por contactarnos !!" target="_top">gustavo.reynoso@myjob.com</a></span>
+        </div>
+        <div class="headers"><b>Llámanos:</b> <span>(044) - 33 1559 9255</span></div>
+        <div class="headers"><b>Visítanos:</b> <span> Manuel Rivera Cambas 2869, Jardines de la Paz.</span></div>
+
     </form>
+
+    <div class="formContent map" id="map"></div>
 </div>
+
+
+<script type="text/javascript">
+
+    var map;
+    function initMap() {
+        var location = {lat: 20.645925, lng: -103.300351};
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 16,
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+
+</script>
+
+
 <footer>
 
     <p>Todos los derechos reservados</p>
