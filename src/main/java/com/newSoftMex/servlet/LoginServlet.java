@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet{
                 session.setAttribute("image", userData.get("image"));
                 session.setAttribute("premiumDate", userData.get("premiumDate"));
                 session.setAttribute("role", userData.get("role"));
+                session.setAttribute("email", userData.get("email"));
 
 
 
@@ -59,6 +60,7 @@ public class LoginServlet extends HttpServlet{
                         if(userData2 != null){
                             session.setAttribute("role","ROLE_USER");
                             session.setAttribute("premiumDate", null);
+                            session.setAttribute("defeatedPremium", true);
                         }
                         else{
                             session.setAttribute("Authenticated", false);
@@ -67,6 +69,7 @@ public class LoginServlet extends HttpServlet{
                             session.setAttribute("image", null);
                             session.setAttribute("premiumDate", null);
                             session.setAttribute("role", null);
+                            session.setAttribute("email", null);
                             response.sendError(403);
                         }
                     }

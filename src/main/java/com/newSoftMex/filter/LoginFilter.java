@@ -37,6 +37,7 @@ public class LoginFilter implements Filter {
                 && !httpRequest.getRequestURI().startsWith("/front_job/saveImage")
                 && !httpRequest.getRequestURI().startsWith("/front_job/saveImageUser")
                 && !httpRequest.getRequestURI().startsWith("/front_job/css")
+                && !httpRequest.getRequestURI().startsWith("/front_job/js")
                 && !httpRequest.getRequestURI().startsWith("/front_job/Contact.jsp")) {
             if (session.isNew() || session.getAttribute("Authenticated") == null) {
                 session.setAttribute("RequestUrl", httpRequest.getRequestURI());

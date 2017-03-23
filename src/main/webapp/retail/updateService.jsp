@@ -146,6 +146,7 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="../js/auth.js"></script>
 <script>
     showServicesType();
     function showServicesType() {
@@ -213,7 +214,6 @@
     }
 
     function Save() {
-        var authorizeButton = $('.btn-save');
 
         $.ajax({
             url: "http://localhost:8095/api_job/private/api/v1/updateService/<%=serviceID%>/" + $('#description').val() + "/" + $('#name').val() + "/" + $('#price').val() + "/" + $('input:radio[name=type]:checked').val() + "/<%=userName%>",
@@ -235,37 +235,6 @@
             error: function (err) {
                 alert(err);
             },
-        });
-    }
-
-    function Login() {
-        var authorizeButton = $('.btn-login');
-        $.ajax({
-            url: "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                if (data.status === "200") {
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
-    }
-
-    function Logout() {
-        $.get("/front_job/logout", function (data) {
-            window.location.href = "/front_job/index.jsp";
         });
     }
 </script>

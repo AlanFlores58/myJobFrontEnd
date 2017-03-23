@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <title>MyJob Group</title>
     <link rel="stylesheet" type="text/css" href="css/mobile.css">
-    <%--<style type="text/css">html, body { height: 100%; margin: 0; padding: 0; }--%>
-    <%--#map { height: 100%; }--%>
-    <%--</style>--%>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPiMd_wot2cZ0axHiWPubGUs4iQBIxQ50&callback=initMap">
     </script>
@@ -37,14 +34,33 @@
 <div class="flex-container navbar navbar-default navbar-fixed-top" role="navigation">
 
     <nav>
-        <div class="flex-item-navbar" id="navHeader">
-            <a href="index.jsp"><img class="flex-item-logo" id="logo"></a>
+        <div class="cover">
+            <div class="flex-item-navbar" id="navHeader">
+                <a href="index.jsp"><img class="flex-item-logo" id="logo"></a>
+            </div>
         </div>
         <ul class="navigation">
             <li><a href="Register.jsp">Regístrate</a></li>
             <li><a class="active" href="Contact.jsp">Contáctanos</a></li>
         </ul>
     </nav>
+
+
+    <div class="login flex-item3">
+
+        <form name="login" action="/front_job/login" id="login-form" method="post" accept-charset="utf-8">
+            <input id="login-token" name="token" type="hidden" >
+            <label for="username"><%=userMessage%></label>
+            <input type="<%=state%>" id="username" placeholder="username" required></li>
+
+
+            <label for="password" <%=state2%>>Password</label>
+            <input type="<%=state3%>" id="password" placeholder="password" required>
+
+
+            <button type="button" class="btn-login" onclick="<%=buttonLogin%>()" ><span class="content"><%=buttonLogin%></span></button>
+        </form>
+    </div>
 
 </div>
 
@@ -60,7 +76,7 @@
 
         <div class="headers">Director General: <span>Gustavo Adolfo Reynoso Díaz</span></div>
         <div class="headers"><b>Envíanos un correo:</b> <span><a
-                href="mailto:gustavo.reynoso@myjob.com?Subject=Gracias por contactarnos !!" target="_top">gustavo.reynoso@myjob.com</a></span>
+                href="mailto:myjob.group.mexico@gmail.com?Subject=Gracias por contactarnos !!" target="_top">myjob.group.mexico@gmail.com</a></span>
         </div>
         <div class="headers"><b>Llámanos:</b> <span>(044) - 33 1559 9255</span></div>
         <div class="headers"><b>Visítanos:</b> <span> Manuel Rivera Cambas 2869, Jardines de la Paz.</span></div>
@@ -70,7 +86,8 @@
     <div class="formContent map" id="map"></div>
 </div>
 
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/auth.js"></script>
 <script type="text/javascript">
 
     var map;
@@ -87,7 +104,6 @@
     }
 
 </script>
-
 
 <footer>
 

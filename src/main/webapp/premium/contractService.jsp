@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.GregorianCalendar" %><%--
   Created by IntelliJ IDEA.
   User: alan.flores
   Date: 2/10/17
@@ -31,6 +33,10 @@
             state2 = "hidden";
             state3 = "hidden";
         }
+        Date date = new Date(Long.parseLong(String.format("%.0f", (Double)sessionsa.getAttribute("premiumDate"))));
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        String stringDate = calendar.get(Calendar.YEAR) + " - " + (calendar.get(Calendar.MONTH) + 1) + " - "+ calendar.get(Calendar.DAY_OF_MONTH);
         System.out.println(user);
         System.out.println(role);
     %>
@@ -122,6 +128,7 @@
             <label for="username"><%=userMessage%></label>
             <input type="<%=state%>" id="username" placeholder="username" required></li>
 
+            <div>Vence: <%=stringDate%></div>
             <img name="profileImg" class="profileImg" src="<%=image%>" alt="User image...">
 
 
@@ -129,7 +136,7 @@
             <input type="<%=state3%>" id="password" placeholder="password" required>
 
 
-            <button type="button" class="btn-login cancel" onclick="<%=buttonLogin%>()" ><span class="content"><%=buttonLogin%></span></button>
+            <button type="button" class="btn-login cancel" onclick="<%=buttonLogin%>()" style="height: 20px"><span class="content"><%=buttonLogin%></span></button>
 
         </form>
     </div>

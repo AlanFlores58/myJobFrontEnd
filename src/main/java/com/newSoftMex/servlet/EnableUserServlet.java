@@ -35,6 +35,7 @@ public class EnableUserServlet extends HttpServlet {
             if (session != null) {
                 session.setAttribute("RequestUrl", request.getRequestURI());
                 session.setAttribute("Authenticated", false);
+                session.setAttribute("enabledUser", true);
                 response.sendRedirect("/front_job/index.jsp");
             }
         }else{

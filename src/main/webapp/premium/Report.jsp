@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.GregorianCalendar" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: alan.flores
   Date: 3/3/17
@@ -31,9 +33,14 @@
         state2 = "hidden";
         state3 = "hidden";
     }
+    Date date = new Date(Long.parseLong(String.format("%.0f", (Double)sessionsa.getAttribute("premiumDate"))));
+    Calendar calendar = new GregorianCalendar();
+    calendar.setTime(date);
+    String stringDate = calendar.get(Calendar.YEAR) + " - " + (calendar.get(Calendar.MONTH) + 1) + " - "+ calendar.get(Calendar.DAY_OF_MONTH);
     System.out.println(user);
     System.out.println(role);
     String contractID = request.getParameter("contractID");
+    String email = request.getParameter("email");
 %>
 <div class="flex-container navbar navbar-default navbar-fixed-top" role="navigation">
 
@@ -58,6 +65,7 @@
             <label for="username"><%=userMessage%></label>
             <input type="<%=state%>" id="username" placeholder="username" required></li>
 
+            <div>Vence: <%=stringDate%></div>
             <img name="profileImg" class="profileImg" src="<%=image%>" alt="User image...">
 
 
@@ -65,7 +73,7 @@
             <input type="<%=state3%>" id="password" placeholder="password" required>
 
 
-            <button type="button" class="btn-login cancel" onclick="<%=buttonLogin%>()" ><span class="content"><%=buttonLogin%></span></button>
+            <button type="button" class="btn-login cancel" onclick="<%=buttonLogin%>()" style="height: 20px"><span class="content"><%=buttonLogin%></span></button>
         </form>
     </div>
 
@@ -75,6 +83,7 @@
     <form id="report-form" class="formContent" action="/front_job/SendEmail" method="post">
         <h3>Escribe tu queja</h3>
         <input type="hidden" id="contractId" name="contractId" value="<%=contractID%>">
+        <input type="hidden" id="email" name="email" value="<%=email%>">
         <div class="headers">
             <textarea id="message" name="message" placeholder="Escribe tu queja...." tabindex="5" rows="4" cols="50"></textarea>
         </div>
@@ -89,40 +98,6 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script>
-
-    function sendEmail() {
-        $('#report-form').submit();
-    }
-    function Login() {
-        $.ajax({
-            url: "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                if (data.status === "200") {
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
-    }
-
-    function Logout() {
-        $.get("/front_job/logout", function (data) {
-            window.location.href = "/front_job/index.jsp";
-        });
-    }
-</script>
+<script type="text/javascript" src="../js/auth.js"></script>
 </body>
 </html>

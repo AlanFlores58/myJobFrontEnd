@@ -32,6 +32,7 @@
         state2 = "hidden";
         state3 = "hidden";
     }
+    Boolean defeatedPremium = (Boolean) sessionsa.getAttribute("defeatedPremium");
     System.out.println(user);
     System.out.println(role);
 %>
@@ -102,50 +103,17 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="../js/auth.js"></script>
 <script>
-  function Login() {
-      $.ajax({
-          url : "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-          type: "GET",
-          contentType: "application/json; charset=utf-8",
-          dataType   : "json",
-          success    : function(data){
-              if(data.status === "200"){
-                  console.log(data.data.token);
-                  alert("Usuario valido.");
-                  $('#login-token').val(data.data.token);
-                  $('#login-form').submit();
-              }
-              else{
-                  alert("Usuario o contraseña no validos.");
-              }
-          },
-          error: function(err){
-              alert(err);
-          }
-      });
-  }
 
-  function Logout() {
-      $.get("/front_job/logout", function(data) {
-          window.location.href = "/front_job/index.jsp";
-      });
-  }
+    if('<%=defeatedPremium%>' !== 'null')
+        if('<%=defeatedPremium%>' === 'true')
+            alert('Tu cuenta premium esta vencida... ');
 
-  function getPremium() {
-      var tarjeta = prompt("Numero de tarjeta", "");
 
-      if (tarjeta != null && tarjeta.trim() != "") {
-          var numeroSecreto = prompt("Numero de secreto", "");
-          if (numeroSecreto != null && numeroSecreto.trim() != "") {
-              $.post("/front_job/getPremium", function (data) {
-                  window.location.href = "/front_job/premium/index.jsp";
-              });
-          }
-      }
-
-  }
-
+    <%
+        sessionsa.setAttribute("defeatedPremium",null);
+    %>
   var myIndex=0;
   carousel();
 

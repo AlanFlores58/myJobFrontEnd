@@ -31,6 +31,7 @@
         state2 = "hidden";
         state3 = "hidden";
     }
+    Boolean enabledUser = (Boolean) sessionsa.getAttribute("enabledUser");
     System.out.println(user);
     System.out.println(role);
 %>
@@ -92,37 +93,16 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/auth.js"></script>
 <script>
-    function Login() {
-        var authorizeButton = $('.btn-login');
-        $.ajax({
-            url: "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                if (data.status === "200") {
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
-    }
+    if('<%=enabledUser%>' !== 'null')
+        if('<%=enabledUser%>' === 'true')
+            alert('Tu cuenta ha sido confirmada por favor has login... ');
 
-    function Logout() {
-        $.get("/front_job/logout", function (data) {
-            window.location.href = "/front_job/index.jsp";
-        });
-    }
+
+    <%
+        sessionsa.setAttribute("enabledUser",null);
+    %>
 
     var myIndex = 0;
     carousel();

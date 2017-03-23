@@ -144,7 +144,7 @@
         <div class="headers">Usuario: <span id="user"></span></div>
         <div class="headers">Descripcion: <input type="text" id="description"></div>
         <div class="headers">Precio del servicio: <span id="servicePrice"></span></div>
-        <div class="headers">Precio acordado: <input type="text" id="price" onchange="calculatePrice()"></div>
+        <div class="headers">Precio acordado: <input type="number" id="price" onchange="calculatePrice()"></div>
         <div class="headers">Cupon: <select id="cupons" onchange="calculatePrice()"></select></div>
         <div class="headers">Fecha de inicio: <input type="date" id="dateBegins"></div>
         <div class="headers">Fecha final: <input type="date" id="dateFinish"></div>
@@ -160,40 +160,44 @@
     <p>Aviso de Privacidad</p>
 </footer>
 
+<script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
 <script>
     function Save() {
-        var authorizeButton = $('.btn-save');
 
-        var discount = $( "#cupons option:selected" ).text();
-        if(discount === null || discount === undefined || discount === "")
-            discount = 0;
-        else{
-            discount = discount.split("/")[0];
-            discount = discount.split("=")[1];
+        if(!checkCampsNull($('#description'),$('#price'),$('#dateBegins'),$('#dateFinish'))){
+            var discount = $( "#cupons option:selected" ).text();
+            if(discount === null || discount === undefined || discount === "")
+                discount = 0;
+            else{
+                discount = discount.split("/")[0];
+                discount = discount.split("=")[1];
+            }
+
+
+            $.ajax({
+                url: "http://localhost:8095/api_job/private/api/v1/saveNewContract/<%=serviceID%>/" + $('#description').val() + "/" + $('#price').val() + "/<%=userName%>/" + $('#dateBegins').val() + "/" + $('#dateFinish').val() + "/" + discount,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'bearer <%=token%>');
+                },
+                success: function (data) {
+                    if (data.status === "200") {
+                        alert("Nuevo contrato hecho ");
+                        $('#save-form').submit();
+                    }
+                    else {
+                        alert("Error.");
+                    }
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                },
+            });
         }
 
-
-        $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/saveNewContract/<%=serviceID%>/" + $('#description').val() + "/" + $('#price').val() + "/<%=userName%>/" + $('#dateBegins').val() + "/" + $('#dateFinish').val() + "/" + discount,
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'bearer <%=token%>');
-            },
-            success: function (data) {
-                if (data.status === "200") {
-                    alert("Nuevo servicio almacenado: " + data.data.name);
-                    $('#save-form').submit();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
     }
 
     function calculatePrice(){
@@ -213,49 +217,6 @@
         serviceName.html('');
 
         serviceName.append(price - (price * discount/ 100));
-    }
-    function Login() {
-        var authorizeButton = $('.btn-login');
-        $.ajax({
-            url : "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType   : "json",
-            success    : function(data){
-                if(data.status === "200"){
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else{
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function(err){
-                alert(err);
-            },
-        });
-    }
-
-    function Logout() {
-        $.get("/front_job/logout", function(data) {
-            window.location.href = "/front_job/index.jsp";
-        });
-    }
-    function getPremium() {
-        var tarjeta = prompt("Numero de tarjeta", "");
-
-        if (tarjeta != null && tarjeta.trim() != "") {
-            var numeroSecreto = prompt("Numero de secreto", "");
-            if (numeroSecreto != null && numeroSecreto.trim() != "") {
-                $.post("/front_job/getPremium", function (data) {
-                    window.location.href = "/front_job/premium/index.jsp";
-                });
-            }
-        }
-
     }
 </script>
 </body>

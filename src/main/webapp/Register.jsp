@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -55,38 +57,38 @@
         <fieldset>
             <legend><span class="number"></span>Información Básica</legend>
             <div class="headers">
-                <label for="name">Nombre:</label>
+                <label for="name">* Nombre:</label>
                 <input type="text" id="name" name="name">
             </div>
 
 
             <div class="headers">
-                <label for="lastname">Apellido:</label>
+                <label for="lastname">* Apellido:</label>
                 <input type="text" id="lastname" name="lastname">
             </div>
 
             <div class="headers">
-                <label for="mail">Email:</label>
+                <label for="mail">* Email:</label>
                 <input type="email" id="mail" name="mail">
             </div>
 
             <div class="headers">
-                <label for="cellphone">Celular:</label>
-                <input type="tel" id="cellphone" name="cellphone">
+                <label for="cellphone">* Celular:</label>
+                <input type="number" id="cellphone" name="cellphone">
             </div>
 
             <div class="headers">
-                <label for="telephone">Telefono:</label>
-                <input type="tel" id="telephone" name="telephone">
+                <label for="telephone">* Telefono:</label>
+                <input type="number" id="telephone" name="telephone">
             </div>
 
             <div class="headers">
-                <label for="name">Nombre de Usuario:</label>
+                <label for="name">* Nombre de Usuario:</label>
                 <input type="text" id="username2" name="username">
             </div>
 
             <div class="headers">
-                <label for="password">Contraseña:</label>
+                <label for="password">* Contraseña:</label>
                 <input type="password" id="password" name="password">
             </div>
 
@@ -115,6 +117,7 @@
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/CheckElements.js"></script>
 <script>
     function previewFile(){
         var preview = document.querySelector('img[name=profileImg]'); //selects the query named img
@@ -135,8 +138,11 @@
     previewFile();
 
     function signup() {
-        var authorizeButton = $('.btn-login');
-        $('#sigup-form').submit();
+        if(!checkCampsNull($('#name'),$('#lastname'),$('#mail'),$('#cellphone'),$('#telephone'),$('#username2'),$('#password'))){
+            alert("Se le enviara un correo de comfirmacion para su cuenta...");
+            $('#sigup-form').submit();
+        }
+
     }
 </script>
 

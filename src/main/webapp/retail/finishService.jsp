@@ -75,7 +75,7 @@
                         result.append('<td><input type="checkbox" disabled="true" name="canceled" id="canceled" ' + (item.cancelled === true ? 'checked' : '') + '></td>');
                         result.append('<td><input type="checkbox" disabled="true" name="confirmed" id="confirmed" ' + (item.confirmed === true ? 'checked' : '') + '></td>');
                         result.append('<td><input type="checkbox" disabled="true" name="finished" id="finished" ' + (item.finish === true ? 'checked' : '') + '></td>');
-                        result.append('<td class="button imageTable"><a href="Report.jsp?contractID=' + item.id + '">Denunciar</a></td>');
+                        result.append('<td class="button imageTable"><a href="Report.jsp?contractID=' + item.id + '&&email=' + item.userContract.email + '">Denunciar</a></td>');
                         result.append('</tr>');
                     });
                 }
@@ -141,39 +141,10 @@
     <p>Terminos y Condiciones</p>
     <p>Aviso de Privacidad</p>
 </footer>
+<script type="text/javascript" src="../js/auth.js"></script>
 <script>
     function searchId() {
         window.location.href = "finishContract.jsp?contractID=" + $('#contract').val();
-    }
-    function Login() {
-        var authorizeButton = $('.btn-login');
-        $.ajax({
-            url: "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                if (data.status === "200") {
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
-    }
-
-    function Logout() {
-        $.get("/front_job/logout", function (data) {
-            window.location.href = "/front_job/index.jsp";
-        });
     }
 </script>
 </body>

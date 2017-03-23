@@ -58,6 +58,7 @@
                     var price = $("#price");
                     var cupons = $("#cupons");
                     var priceWithDescount = $("#priceWithDescount");
+                    var profit = $("#profit");
                     var buttonToPay = $("#pay-form");
                     var dateBegins = $("#dateBegins");
                     var date = new Date(data.data.dateStart);
@@ -95,6 +96,7 @@
 
 
                     priceWithDescount.append((priceVal - (priceVal * discount/ 100)));
+                    profit.append((priceVal - (priceVal * discount/ 100)) * .1)
 
                     if(!data.data.cancelled && !data.data.confirmAdmin) {
                         buttonToPay.append('<button type="button" class="btn-confirm btn-login" onclick="confirm()" ><span class="content">Cornfirmar</span></button>');
@@ -209,6 +211,7 @@
     <div class="headers">Fecha de inicio: <span id="dateBegins"></span></div>
     <div class="headers">Fecha final: <span id="dateFinish"></span></div>
     <div class="headers">Precio con descuento: <span id="priceWithDescount"></span></div>
+    <div class="headers">Ganancia MyJobGroup(10%): <span id="profit"></span></div>
     <div class="headers">Pagado: <input type="checkbox" disabled="true" name="payed" id="payed"></div>
     <div class="headers">Terminado por admin: <input type="checkbox" disabled="true" name="admin" id="admin"></div>
     <div class="headers">Cancelado: <input type="checkbox" disabled="true" name="admin" id="canceled"></div>
@@ -224,37 +227,6 @@
     <p>Aviso de Privacidad</p>
 </footer>
 
-<script>
-    function Login() {
-        var authorizeButton = $('.btn-login');
-        $.ajax({
-            url : "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType   : "json",
-            success    : function(data){
-                if(data.status === "200"){
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else{
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function(err){
-                alert(err);
-            },
-        });
-    }
-
-    function Logout() {
-        $.get("/front_job/logout", function(data) {
-            window.location.href = "/front_job/index.jsp";
-        });
-    }
-</script>
+<script type="text/javascript" src="../js/auth.js"></script>
 </body>
 </html>

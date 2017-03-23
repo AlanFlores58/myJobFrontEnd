@@ -34,6 +34,7 @@ public class GetPremiumServlet extends HttpServlet {
         if(userData != null){
             if (session != null) {
                 session.setAttribute("role", userData.get("role"));
+                session.setAttribute("premiumDate", userData.get("premiumDate"));
                 response.sendRedirect("/front_job/premium/index.jsp");
             }
         }else{

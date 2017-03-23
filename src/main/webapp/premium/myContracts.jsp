@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.GregorianCalendar" %>
+<%@ page import="java.util.Calendar" %><%--
   Created by IntelliJ IDEA.
   User: alan.flores
   Date: 2/10/17
@@ -31,6 +33,10 @@
             state2 = "hidden";
             state3 = "hidden";
         }
+        Date date = new Date(Long.parseLong(String.format("%.0f", (Double)sessionsa.getAttribute("premiumDate"))));
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        String stringDate = calendar.get(Calendar.YEAR) + " - " + (calendar.get(Calendar.MONTH) + 1) + " - "+ calendar.get(Calendar.DAY_OF_MONTH);
         System.out.println(user);
         System.out.println(role);
     %>
@@ -79,7 +85,7 @@
                         result.append('<td><input type="checkbox" disabled="true" name="canceled" id="canceled" ' + (item.cancelled === true ? 'checked' : '') + '></td>');
                         result.append('<td><input type="checkbox" disabled="true" name="confirmed" id="confirmed" ' + (item.confirmed === true ? 'checked' : '') + '></td>');
                         result.append('<td><input type="checkbox" disabled="true" name="finished" id="finished" ' + (item.finish === true ? 'checked' : '') + '></td>');
-                        result.append('<td class="button imageTable"><a href="Report.jsp?contractID=' + item.id + '">Denunciar</a></td>');
+                        result.append('<td class="button imageTable"><a href="Report.jsp?contractID=' + item.id + '&&email=' + item.service.userService.email + '">Denunciar</a></td>');
                         result.append('</tr>');
                     });
                 }
@@ -118,6 +124,7 @@
             <label for="username"><%=userMessage%></label>
             <input type="<%=state%>" id="username" placeholder="username" required></li>
 
+            <div>Vence: <%=stringDate%></div>
             <img name="profileImg" class="profileImg" src="<%=image%>" alt="User image...">
 
 
@@ -125,7 +132,7 @@
             <input type="<%=state3%>" id="password" placeholder="password" required>
 
 
-            <button type="button" class="btn-login cancel" onclick="<%=buttonLogin%>()" ><span class="content"><%=buttonLogin%></span></button>
+            <button type="button" class="btn-login cancel" onclick="<%=buttonLogin%>()" style="height: 20px"><span class="content"><%=buttonLogin%></span></button>
         </form>
     </div>
 
@@ -145,39 +152,10 @@
     <p>Terminos y Condiciones</p>
     <p>Aviso de Privacidad</p>
 </footer>
+<script type="text/javascript" src="../js/auth.js"></script>
 <script>
     function searchId() {
         window.location.href = "myContract.jsp?contractID=" + $('#contract').val();
-    }
-    function Login() {
-        var authorizeButton = $('.btn-login');
-        $.ajax({
-            url : "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
-            type: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType   : "json",
-            success    : function(data){
-                if(data.status === "200"){
-                    console.log(data.data.token);
-                    alert("Usuario valido.");
-                    $('#login-token').val(data.data.token);
-                    $('#login-form').submit();
-                }
-                else{
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
-                }
-            },
-            error: function(err){
-                alert(err);
-            },
-        });
-    }
-
-    function Logout() {
-        $.get("/front_job/logout", function(data) {
-            window.location.href = "/front_job/index.jsp";
-        });
     }
 </script>
 </body>
