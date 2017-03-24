@@ -7,7 +7,7 @@ function checkCampsNull(){
     var args = Array.from(arguments);
     args.some(function(element) {
 
-        if(element.val() === null || element.val() === undefined || element.val() == ''){
+        if(element.val() === null || element.val() === undefined || element.val() == '' || element.val() === ''){
             alert("Falta llenar un campo obligatorio...");
             element.focus();
             error = true;

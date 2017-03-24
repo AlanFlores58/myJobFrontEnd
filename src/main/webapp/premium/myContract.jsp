@@ -46,7 +46,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getContractByUserAndID/<%=userName%>/<%=contractID%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getContractByUserAndID/<%=userName%>/<%=contractID%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -108,7 +108,7 @@
 
 
                     $.ajax({
-                        url: "http://localhost:8095/api_job/private/api/v1/getCommentsByUserService/" + data.data.service.userService.username,
+                        url: "http://localhost:8080/api_job/private/api/v1/getCommentsByUserService/" + data.data.service.userService.username,
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -160,7 +160,7 @@
                 var numeroSecreto = prompt("Numero de secreto", "");
                 if (numeroSecreto != null && numeroSecreto.trim() != "") {
                     $.ajax({
-                        url: "http://localhost:8095/api_job/private/api/v1/payContract/<%=contractID%>",
+                        url: "http://localhost:8080/api_job/private/api/v1/payContract/<%=contractID%>",
                         type: "POST",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -263,30 +263,32 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
 <script>
     function saveComment() {
 
-        $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/createComment/" + $('#comment').val() + "/<%=userName%>/" + $('#userServiceText').val(),
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'bearer <%=token%>');
-            },
-            success: function (data) {
-                if (data.status === "200") {
-                    alert("Nuevo comentario ");
-                    window.location.reload();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
+        if(!checkCampsNull($('#comment')))
+            $.ajax({
+                url: "http://localhost:8080/api_job/private/api/v1/createComment/" + $('#comment').val() + "/<%=userName%>/" + $('#userServiceText').val(),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'bearer <%=token%>');
+                },
+                success: function (data) {
+                    if (data.status === "200") {
+                        alert("Nuevo comentario ");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Usuario o contraseña no validos.");
+                    }
+                },
+                error: function (err) {
+                    alert(err);
+                },
+            });
     }
 </script>
 </body>

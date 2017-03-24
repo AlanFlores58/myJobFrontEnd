@@ -36,7 +36,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getAllServices",
+            url: "http://localhost:8080/api_job/private/api/v1/getAllServices",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",

@@ -75,18 +75,18 @@
 <div class="container">
     <form name="save" class="formContent" action="/front_job/retail/index.jsp" id="save-form" method="post">
         <div class="headers">
-            <label for="name">Nombre:</label>
+            <label for="name">* Nombre:</label>
             <input type="text" id="name" name="name">
         </div>
 
         <div class="headers">
-            <label for="description">Descripcion:</label>
+            <label for="description">* Descripcion:</label>
             <input type="text" id="description" name="description">
         </div>
 
         <div class="headers">
-            <label for="price">Precio:</label>
-            <input type="text" id="price" name="price">
+            <label for="price">* Precio:</label>
+            <input type="number" id="price" name="price">
         </div>
 
         <div class="headers">
@@ -109,12 +109,12 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
 <script>
     showServicesType();
     function showServicesType() {
-
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getAllServices",
+            url: "http://localhost:8080/api_job/private/api/v1/getAllServices",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -134,40 +134,39 @@
                     console.log(data.data);
                 }
                 else {
-                    alert("Usuario o contraseña no validos.");
-                    authorizeButton.onclick = handleAuthClick;
+                    alert("Error.");
                 }
             },
             error: function (err) {
-                alert(err);
+                alert(err.statusText);
             },
         });
     }
 
     function Save() {
-        var authorizeButton = $('.btn-save');
 
-        $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/saveNewService/" + $('#description').val() + "/" + $('#name').val() + "/" + $('#price').val() + "/" + $('input:radio[name=type]:checked').val() + "/<%=userName%>",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'bearer <%=token%>');
-            },
-            success: function (data) {
-                if (data.status === "200") {
-                    alert("Nuevo servicio almacenado: " + data.data.name);
-                    $('#save-form').submit();
-                }
-                else {
-                    alert("Usuario o contraseña no validos.");
-                }
-            },
-            error: function (err) {
-                alert(err);
-            },
-        });
+        if(!checkCampsNull($('#name'),$('#description'),$('#price')))
+            $.ajax({
+                url: "http://localhost:8080/api_job/private/api/v1/saveNewService/" + $('#description').val() + "/" + $('#name').val() + "/" + $('#price').val() + "/" + $('input:radio[name=type]:checked').val() + "/<%=userName%>",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'bearer <%=token%>');
+                },
+                success: function (data) {
+                    if (data.status === "200") {
+                        alert("Nuevo servicio almacenado: " + data.data.name);
+                        $('#save-form').submit();
+                    }
+                    else {
+                        alert("Error.");
+                    }
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                },
+            });
     }
 </script>
 </body>

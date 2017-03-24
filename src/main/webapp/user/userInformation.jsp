@@ -38,7 +38,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getUserInfo/<%=requestUserId%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getUserInfo/<%=requestUserId%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -62,7 +62,7 @@
                     cellphone.append("" + data.data.cellphone + "")
                     telephone.append("" + data.data.telephone + "")
                     $.ajax({
-                        url: "http://localhost:8095/api_job/private/api/v1/getCommentsByUserService/" + data.data.username,
+                        url: "http://localhost:8080/api_job/private/api/v1/getCommentsByUserService/" + data.data.username,
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",

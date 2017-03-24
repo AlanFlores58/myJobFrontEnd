@@ -34,7 +34,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getContractsByServer/<%=userName%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getContractsByServer/<%=userName%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -143,9 +143,11 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
 <script>
     function searchId() {
-        window.location.href = "confirmContract.jsp?contractID=" + $('#contract').val();
+        if(!checkCampsNull($('#contract')))
+            window.location.href = "confirmContract.jsp?contractID=" + $('#contract').val();
     }
 </script>
 </body>

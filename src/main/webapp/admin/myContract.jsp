@@ -40,7 +40,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getContractByID/<%=contractID%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getContractByID/<%=contractID%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -114,7 +114,7 @@
 
         function cancel() {
             $.ajax({
-                url: "http://localhost:8095/api_job/private/api/v1/cancelContract/<%=contractID%>",
+                url: "http://localhost:8080/api_job/private/api/v1/cancelContract/<%=contractID%>",
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -124,7 +124,7 @@
                 success: function (data) {
                     if (data.status === "200") {
                         console.log(data.data);
-                        alert("Pagado!");
+                        alert("Cancelado!");
                         $("#pay-form").submit();
                     }
                     else {
@@ -138,7 +138,7 @@
         }
         function confirm() {
             $.ajax({
-                url: "http://localhost:8095/api_job/private/api/v1/finishContractByAdmin/<%=contractID%>",
+                url: "http://localhost:8080/api_job/private/api/v1/finishContractByAdmin/<%=contractID%>",
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -148,7 +148,7 @@
                 success: function (data) {
                     if (data.status === "200") {
                         console.log(data.data);
-                        alert("Pagado!");
+                        alert("Confirmado!");
                         $("#pay-form").submit();
                     }
                     else {

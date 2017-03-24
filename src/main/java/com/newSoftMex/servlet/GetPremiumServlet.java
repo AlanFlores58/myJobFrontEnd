@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class GetPremiumServlet extends HttpServlet {
 
-    private static final String PREMIUM_USER ="http://localhost:8095/api_job/private/api/v1/getPremium/";
+    private static final String PREMIUM_USER ="http://localhost:8080/api_job/private/api/v1/getPremium/";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

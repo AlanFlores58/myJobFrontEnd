@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class EnableUserServlet extends HttpServlet {
 
-    private static final String ENABLE_USER ="http://localhost:8095/api_job/public/api/v1/enableUser/";
+    private static final String ENABLE_USER ="http://localhost:8080/api_job/public/api/v1/enableUser/";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

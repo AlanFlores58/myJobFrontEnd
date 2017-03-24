@@ -51,7 +51,7 @@ public class SaveImageUserServlet extends HttpServlet {
 
 
             HttpSession session = request.getSession(false);
-            URL url = new URL("http://localhost:8095/api_job/public/api/v1/signup/" + name.replace(" ","%20") + "/" + lastname.replace(" ","%20") + "/" + mail.replace(" ","%20") + "/" + username.replace(" ","%20") + "/" + password.replace(" ","%20") + "/" + type + "/" + sex + "/" + ("../" + relativePath + "/").replace("/","--").replace(".","%2e") + fileName.replace(".","%2e") + "/" + cellphone.replace(" ","%20") + "/" + telephone.replace(" ","%20"));
+            URL url = new URL("http://localhost:8080/api_job/public/api/v1/signup/" + name.replace(" ","%20") + "/" + lastname.replace(" ","%20") + "/" + mail.replace(" ","%20") + "/" + username.replace(" ","%20") + "/" + password.replace(" ","%20") + "/" + type + "/" + sex + "/" + ("../" + relativePath + "/").replace("/","--").replace(".","%2e") + fileName.replace(".","%2e") + "/" + cellphone.replace(" ","%20") + "/" + telephone.replace(" ","%20"));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoInput(true);

@@ -37,7 +37,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getServicesById/<%=serviceID%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getServicesById/<%=serviceID%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -59,7 +59,7 @@
 
                     //getCupons
                     $.ajax({
-                        url: "http://localhost:8095/api_job/private/api/v1/getTicketsByUserNotUsed/<%=userName%>",
+                        url: "http://localhost:8080/api_job/private/api/v1/getTicketsByUserNotUsed/<%=userName%>",
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -142,12 +142,12 @@
         <div class="headers">Nombre del Servicio: <span id="serviceName"></span></div>
         <div class="headers">Prestador de servicio: <span id="userService"></span></div>
         <div class="headers">Usuario: <span id="user"></span></div>
-        <div class="headers">Descripcion: <input type="text" id="description"></div>
+        <div class="headers">* Descripcion: <input type="text" id="description"></div>
         <div class="headers">Precio del servicio: <span id="servicePrice"></span></div>
-        <div class="headers">Precio acordado: <input type="number" id="price" onchange="calculatePrice()"></div>
+        <div class="headers">* Precio acordado: <input type="number" id="price" onchange="calculatePrice()"></div>
         <div class="headers">Cupon: <select id="cupons" onchange="calculatePrice()"></select></div>
-        <div class="headers">Fecha de inicio: <input type="date" id="dateBegins"></div>
-        <div class="headers">Fecha final: <input type="date" id="dateFinish"></div>
+        <div class="headers">* Fecha de inicio: <input type="date" id="dateBegins"></div>
+        <div class="headers">* Fecha final: <input type="date" id="dateFinish"></div>
         <div class="headers">Precio con descuento: <span id="priceWithDescount">0</span></div>
         <button type="button" class="btn-save btn-login" onclick="Save()"><span class="content">Guardar</span></button>
     </form>
@@ -176,7 +176,7 @@
 
 
             $.ajax({
-                url: "http://localhost:8095/api_job/private/api/v1/saveNewContract/<%=serviceID%>/" + $('#description').val() + "/" + $('#price').val() + "/<%=userName%>/" + $('#dateBegins').val() + "/" + $('#dateFinish').val() + "/" + discount,
+                url: "http://localhost:8080/api_job/private/api/v1/saveNewContract/<%=serviceID%>/" + $('#description').val() + "/" + $('#price').val() + "/<%=userName%>/" + $('#dateBegins').val() + "/" + $('#dateFinish').val() + "/" + discount,
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

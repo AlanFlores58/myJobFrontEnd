@@ -63,7 +63,7 @@ public class SaveImageServlet extends HttpServlet {
 
             HttpSession session = request.getSession(false);
             if(idServiceName == null){
-                URL url = new URL("http://localhost:8095/api_job/private/api/v1/saveNewServiceType/" + description.replace(" ","%20") + "/" + name.replace(" ","%20") + "/" + ("../" + relativePath + "/").replace("/","--").replace(".","%2e").replace(" ","%20") + fileName.replace(".","%2e").replace(" ","%20") + "/");
+                URL url = new URL("http://localhost:8080/api_job/private/api/v1/saveNewServiceType/" + description.replace(" ","%20") + "/" + name.replace(" ","%20") + "/" + ("../" + relativePath + "/").replace("/","--").replace(".","%2e").replace(" ","%20") + fileName.replace(".","%2e").replace(" ","%20") + "/");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("PUT");
                 connection.setDoInput(true);
@@ -85,7 +85,7 @@ public class SaveImageServlet extends HttpServlet {
                     urlString = ("../" + relativePath + "/").replace("/","--").replace(".","%2e") + fileName.replace(".","%2e");
                 else
                     urlString = image.replace("/","--").replace(".","%2e");
-                URL url = new URL("http://localhost:8095/api_job/private/api/v1/saveNewServiceType/" + idServiceName.replace(" ","%20") + "/" + description.replace(" ","%20") + "/" + name.replace(" ","%20") + "/" + urlString.replace(" ","%20") + "/");
+                URL url = new URL("http://localhost:8080/api_job/private/api/v1/saveNewServiceType/" + idServiceName.replace(" ","%20") + "/" + description.replace(" ","%20") + "/" + name.replace(" ","%20") + "/" + urlString.replace(" ","%20") + "/");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
                 connection.setDoInput(true);

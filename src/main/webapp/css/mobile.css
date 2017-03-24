@@ -354,3 +354,7 @@ td {
 .map {
     height: 200px;
 }
+
+.formContent form{
+    text-align: left;
+}

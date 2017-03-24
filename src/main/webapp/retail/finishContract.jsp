@@ -34,7 +34,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getContractByServerAndID/<%=userName%>/<%=contractID%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getContractByServerAndID/<%=userName%>/<%=contractID%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -104,7 +104,7 @@
 
         function confim() {
             $.ajax({
-                url: "http://localhost:8095/api_job/private/api/v1/finishContract/<%=contractID%>",
+                url: "http://localhost:8080/api_job/private/api/v1/finishContract/<%=contractID%>",
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

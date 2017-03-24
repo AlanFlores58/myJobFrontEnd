@@ -30,7 +30,7 @@ public class SendEmailServlet extends HttpServlet{
         String email2 = request.getParameter("email");
         String email = (String) session.getAttribute("email");
         try {
-            sendEmail("********," + email + "," + email2,"Problemas con contrato " + contractId, "Ususario: " + username + "\n"
+            sendEmail("myjob.group.mexico@gmail.com," + email + "," + email2,"Problemas con contrato " + contractId, "Ususario: " + username + "\n"
                                                                                      + "Id del contrato: " + contractId + "\n"
                                                                                      + "Mensaje: " + message);
         } catch (MessagingException e) {
@@ -52,8 +52,8 @@ public class SendEmailServlet extends HttpServlet{
 
         System.out.println(emailTo);
         Properties props = new Properties();
-        String emailFrom = "********";
-        String password = "********";
+        String emailFrom = "myjob.group.mexico@gmail.com";
+        String password = "12345678qwerty";
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class",

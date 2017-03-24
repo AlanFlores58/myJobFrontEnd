@@ -99,5 +99,13 @@
 </footer>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
+<script>
+
+    function sendEmail() {
+        if(!checkCampsNull($('#message')))
+            $('#report-form').submit();
+    }
+</script>
 </body>
 </html>

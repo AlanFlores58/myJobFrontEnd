@@ -25,8 +25,8 @@ import java.lang.reflect.Type;
 public class LoginServlet extends HttpServlet{
 
 
-    private static final String LOGIN ="http://localhost:8095/api_job/private/api/v1/currentUser/";
-    private static final String USER_ROLE ="http://localhost:8095/api_job/private/api/v1/unUpgradePremium/";
+    private static final String LOGIN ="http://localhost:8080/api_job/private/api/v1/currentUser/";
+    private static final String USER_ROLE ="http://localhost:8080/api_job/private/api/v1/unUpgradePremium/";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -37,7 +37,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $.ajax({
-            url: "http://localhost:8095/api_job/private/api/v1/getServiceTypeByID/<%=serviceTypeID%>",
+            url: "http://localhost:8080/api_job/private/api/v1/getServiceTypeByID/<%=serviceTypeID%>",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -104,16 +104,18 @@
 
 </div>
 <div class="container">
-    <form name="saveImage"  class="formContent" action="/front_job/saveImage" id="save-form" method="post" enctype="multipart/form-data">
+<div class="formContent">
+    <form name="saveImage"  action="/front_job/saveImage" id="save-form" method="post" enctype="multipart/form-data">
 
         <div class="headers"><img src="" name="serviceImage" id="img" alt="Image preview..."></div>
         <div class="headers"><input type="file" id=file name="file" onchange="previewFile()"/></div>
-        <div class="headers">Nombre: <input type="text" id="name" name="name" /></div>
-        <div class="headers">Descripcion: <input type="text" id="description" name="description" /></div>
+        <div class="headers">* Nombre: <input type="text" id="name" name="name" /></div>
+        <div class="headers">* Descripcion: <input type="text" id="description" name="description" /></div>
         <div class="headers"><input type="hidden" name="imageName" id="imageName" value=""/></div>
         <div class="headers"><input type="hidden" name="idServiceName" id="idServiceName" value="<%=serviceTypeID%>"></div>
-        <button class="btn-login" onclick="saveImage()">Save</button>
     </form>
+    <button class="btn-login" onclick="Save()">Save</button>
+</div>
 </div>
 <footer>
 
@@ -123,6 +125,7 @@
     <p>Aviso de Privacidad</p>
 </footer>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
 <script>
 
     function previewFile(){
@@ -143,8 +146,9 @@
 
     previewFile();
 
-    function saveImage(){
-        $('#save-form').submit();
+    function Save(){
+        if(!checkCampsNull($('#name'),$('#description')))
+            $('#save-form').submit();
     }
 
     previewFile();  //calls the function named previewFile()

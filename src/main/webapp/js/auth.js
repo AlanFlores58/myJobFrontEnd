@@ -4,7 +4,7 @@
 
 function Login() {
     $.ajax({
-        url: "http://localhost:8095/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
+        url: "http://localhost:8080/api_job/public/api/v1/login/" + $('#username').val() + "/" + $('#password').val() + "",
         type: "GET",
         contentType: "application/json; charset=utf-8",
         dataType: "json",

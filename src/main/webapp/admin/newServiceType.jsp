@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>MyJob Group</title>
     <link rel="stylesheet" type="text/css" href="../css/mobile.css">
 </head>
@@ -31,8 +30,6 @@
         state2 = "hidden";
         state3 = "hidden";
     }
-    System.out.println(user);
-    System.out.println(role);
 %>
 
 <div class="flex-container navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,17 +69,23 @@
 
 </div>
 <div class="container">
-<form name="saveImage" class="formContent" action="/front_job/saveImage" id="save-form" method="post" enctype="multipart/form-data">
-
+<div class="formContent">
+<form name="save" action="/front_job/saveImage" id="save-form" method="post" enctype="multipart/form-data">
     <div class="headers"><img src="" name="serviceImage" alt="Image preview..."></div>
     <div class="headers"><input type="file" name="file" onchange="previewFile()"/></div>
-    <div class="headers">Nombre: <input type="text" name="name" /></div>
-    <div class="headers">Descripcion: <input type="text" name="description" /></div>
+    <div class="headers">
+        <label for="name">* Nombre:</label>
+        <input type="text" id="name" name="name">
+    </div>
 
+    <div class="headers">
+        <label for="description">* Descripcion:</label>
+        <input type="text" id="description" name="description">
+    </div>
 
-
-    <button class="btn-login" onclick="saveImage()">Save</button>
 </form>
+<button class="btn-login" onclick="Save()">Save</button>
+</div>
 </div>
 <footer>
 
@@ -94,6 +97,7 @@
 </body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/CheckElements.js"></script>
 <script>
 
     function previewFile(){
@@ -112,10 +116,9 @@
         }
     }
 
-    previewFile();
-
-    function saveImage(){
-        $('#save-form').submit();
+    function Save(){
+        if(!checkCampsNull($('#name'),$('#description')))
+            $('#save-form').submit();
     }
 
     previewFile();  //calls the function named previewFile()
